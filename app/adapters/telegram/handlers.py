@@ -342,11 +342,15 @@ async def cmd_simulate(message: Message) -> None:
         return
     parts = (message.text or "").split()
     speed = float(parts[1]) if len(parts) > 1 and parts[1].replace(".", "", 1).isdigit() else 10.0
-    dest = simulate.start(user.id, speedup=speed)
-    if dest is None:
+    info = simulate.start(user.id, speedup=speed)
+    if info is None:
         await message.answer(render("simulate_missing", user.language))
         return
-    await message.answer(render("simulate_start", user.language, dest=html.escape(dest)), reply_markup=main_keyboard(user.language))
+    start_name, dest_name = info
+    await message.answer(
+        render("simulate_start", user.language, start=html.escape(start_name), dest=html.escape(dest_name)),
+        reply_markup=main_keyboard(user.language),
+    )
 
 
 @router.message(F.text & ~F.text.startswith("/"))

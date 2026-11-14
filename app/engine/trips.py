@@ -451,12 +451,13 @@ async def add_location(
 
 
 def card_text(user: User, trip: Trip) -> str:
+    title = f"{trip.start_name} → {trip.dest_name}" if trip.start_name else trip.dest_name
     if trip.status in (Status.CREATED, Status.ROUTED) or trip.last_lat is None:
-        return render("card_waiting", user.language, dest=trip.dest_name)
+        return render("card_waiting", user.language, dest=title)
     return render(
         "card",
         user.language,
-        dest=trip.dest_name,
+        dest=title,
         km=fmt_km(trip.distance_left_m),
         minutes=fmt_minutes(trip.time_left_s),
         street=trip.current_street or render("card_unknown_street", user.language),

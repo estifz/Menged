@@ -33,14 +33,14 @@ def cancel(user_id: int) -> None:
         task.cancel()
 
 
-def start(user_id: int, speedup: float = 10.0) -> str | None:
-    """Start a replay in the background. Returns the destination name."""
+def start(user_id: int, speedup: float = 10.0) -> tuple[str, str] | None:
+    """Start a replay in the background. Returns (start_name, dest_name)."""
     demo = load_demo()
     if demo is None:
         return None
     cancel(user_id)
     _tasks[user_id] = asyncio.create_task(run(user_id, max(1.0, min(speedup, 60.0))))
-    return demo.dest["name"]
+    return demo.start["name"], demo.dest["name"]
 
 
 async def run(user_id: int, speedup: float, jitter_m: float = 6.0, sleep: bool = True) -> int | None:

@@ -12,7 +12,7 @@ def test_amharic_variants_fold_together():
 def test_every_template_has_english_and_renders_in_amharic():
     for key, variants in TEXTS.items():
         assert "en" in variants, key
-        params = {"dest": "X", "km": "1", "minutes": 5, "place": "P", "street": "S", "landmark": "L",
+        params = {"dest": "X", "start": "Y", "km": "1", "minutes": 5, "place": "P", "street": "S", "landmark": "L",
                   "count": 2, "query": "q", "language": "L", "voice": "v", "level": "l", "state": "s",
                   "n": 1, "name": "N", "kind": "k", "meters": 10}
         render(key, "am", **params)

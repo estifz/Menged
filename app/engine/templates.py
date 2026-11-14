@@ -199,8 +199,8 @@ TEXTS: dict[str, dict[str, str]] = {
     "level_normal": {"en": "normal", "am": "መደበኛ"},
     "level_chatty": {"en": "chatty (everything)", "am": "ብዙ (ሁሉንም)"},
     "simulate_start": {
-        "en": "🎬 Demo: replaying a recorded trip to {dest}…",
-        "am": "🎬 ማሳያ፦ ወደ {dest} የተቀዳ ጉዞ በመድገም ላይ…",
+        "en": "🎬 Demo: replaying a recorded trip from {start} to {dest}…",
+        "am": "🎬 ማሳያ፦ ከ{start} ወደ {dest} የተቀዳ ጉዞ በመድገም ላይ…",
     },
     "simulate_denied": {"en": "This command is for the demo team.", "am": "ይህ ትዕዛዝ ለማሳያ ቡድኑ ብቻ ነው።"},
     "simulate_missing": {
