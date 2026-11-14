@@ -1,11 +1,13 @@
 """Bot setup: polling for local development, webhook in production."""
 
 import asyncio
+import hmac
 import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
+from aiogram.exceptions import TelegramBadRequest
 from aiogram.fsm.storage.memory import MemoryStorage
 from aiogram.types import Update
 from fastapi import APIRouter, Header, HTTPException, Request
@@ -55,12 +57,22 @@ async def _set_webhook_forever() -> None:
     if not s.public_base_url:
         log.error("TELEGRAM_MODE=webhook but neither WEBHOOK_BASE_URL nor RENDER_EXTERNAL_URL is set; bot disabled")
         return
+    if not s.webhook_secret_is_strong:
+        # The default or a short secret would let anyone forge Telegram updates.
+        log.error("WEBHOOK_SECRET is missing or weak (needs 16+ characters, not the default); bot disabled")
+        return
     url = s.public_base_url + WEBHOOK_PATH
     while True:
         try:
             assert bot is not None and dp is not None
-            await bot.set_webhook(url, secret_token=s.webhook_secret, allowed_updates=dp.resolve_used_update_types())
+            await bot.set_webhook(
+                url, secret_token=s.telegram_secret_token, allowed_updates=dp.resolve_used_update_types()
+            )
             log.info("webhook set to %s", url)
+            return
+        except TelegramBadRequest as e:
+            # A request Telegram rejects won't succeed by retrying; say so clearly.
+            log.error("Telegram rejected the webhook setup: %s. Fix the config and redeploy.", e)
             return
         except Exception as e:
             log.warning("Telegram not reachable (%s); retrying webhook setup in 15 s", e)
@@ -101,7 +113,7 @@ async def stop_bot() -> None:
 async def telegram_webhook(
     request: Request, x_telegram_bot_api_secret_token: str | None = Header(default=None)
 ) -> dict:
-    if x_telegram_bot_api_secret_token != get_settings().webhook_secret:
+    if not hmac.compare_digest(x_telegram_bot_api_secret_token or "", get_settings().telegram_secret_token):
         raise HTTPException(status_code=403)
     if bot is None or dp is None:
         raise HTTPException(status_code=503)

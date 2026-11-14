@@ -6,7 +6,7 @@ from datetime import UTC, datetime
 from types import SimpleNamespace
 
 os.environ.update(
-    {"ENABLE_BOT": "false", "ENABLE_SCHEDULER": "false", "TTS_ENABLED": "false", "ADMIN_TELEGRAM_IDS": ""}
+    {"ENABLE_BOT": "true", "TELEGRAM_BOT_TOKEN": "", "ENABLE_SCHEDULER": "false", "TTS_ENABLED": "false", "ADMIN_TELEGRAM_IDS": ""}
 )
 
 import pytest

@@ -4,6 +4,7 @@ Every distance and time threshold from the plan lives here so it can be tuned
 during testing without touching the engine code.
 """
 
+import hashlib
 from functools import lru_cache
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
@@ -76,6 +77,17 @@ class Settings(BaseSettings):
     @property
     def time_left_marks(self) -> list[int]:
         return sorted((int(x) for x in self.time_left_marks_min.split(",") if x.strip()), reverse=True)
+
+    @property
+    def telegram_secret_token(self) -> str:
+        """Webhook secret in the form Telegram accepts (only A-Z, a-z, 0-9, _ and -,
+        at most 256 chars). Any WEBHOOK_SECRET works, e.g. Render's generated
+        values, which contain characters like + / =."""
+        return hashlib.sha256(self.webhook_secret.encode()).hexdigest()
+
+    @property
+    def webhook_secret_is_strong(self) -> bool:
+        return self.webhook_secret != "change-me" and len(self.webhook_secret) >= 16
 
     @property
     def public_base_url(self) -> str:
