@@ -1,0 +1,1174 @@
+{
+ "start": {
+  "name": "Mercato",
+  "lat": 9.029628,
+  "lon": 38.739604
+ },
+ "dest": {
+  "name": "Bole Medhanialem",
+  "lat": 8.9984556,
+  "lon": 38.7862428
+ },
+ "route": {
+  "line": "urbv@gjmkFWPfAnBdCyA~@k@rAs@|BuAFCbBgATCJIl@o@x@eA|@mAx@cAbByBbAqATMZOdGsBfBm@z@Wp@MzAKfAEf@CxDO~CBrDBfDAf@?rDAT??WEeAAUKkCCq@?OKaB?CIqA?IEaAAWWoGOsEQyCKeDEaB@g@Ks@CSE_AOcDKiB^a@h@e@RSp@g@vBmBhCwBhB{ArCyBdAcAxEeEtBeBJIh@UZAX@Fi@VkANeAh@gG`@eF@SBi@?o@XkILcCXqHBs@?KDw@l@qLHeBFcALiB@gB?cBEaA|@k@d@a@NQXc@Tk@p@}@fAsBDIz@iBl@wApA_C`@u@?IIS`Bw@XMr@YvC{Ah@_@d@k@b@o@h@cAZi@`@{@pAeC^g@f@o@f@c@RUd@a@|@{@ZW|DmDbAaAj@k@d@a@nBeBj@o@pAwAhAyAxAiCNSlBgDf@m@b@e@DGZ[XWh@e@FCNQDQ?ECMGKIGCAUCM@KFILCN?Hs@rAEF",
+  "distance_m": 7406.5,
+  "duration_s": 605.4,
+  "provider": "ors"
+ },
+ "places": [
+  {
+   "osm_id": "n531340120",
+   "name": "Ambassador",
+   "name_am": "አምባሳደር",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0181917,
+   "lon": 38.7541181
+  },
+  {
+   "osm_id": "n538352192",
+   "name": "Bonjour",
+   "name_am": "ቦንዡር ካፌ",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0112547,
+   "lon": 38.7588782
+  },
+  {
+   "osm_id": "n598182728",
+   "name": "Temudas Pension",
+   "name_am": "ቴሙዳስ ፔንሲዮን",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0011052,
+   "lon": 38.7838473
+  },
+  {
+   "osm_id": "n615669095",
+   "name": "Zola Restaurant",
+   "name_am": "ዞላ ሬስቶራንት",
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 8.998784,
+   "lon": 38.7859347
+  },
+  {
+   "osm_id": "n622357088",
+   "name": "The Lion of Judah of Haile Selassie I",
+   "name_am": "ሙአንበሳ",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0164043,
+   "lon": 38.7523697
+  },
+  {
+   "osm_id": "n622357094",
+   "name": "ሲዳሞ ተራ / Sidama Market",
+   "name_am": "ሲዳሞ ተራ",
+   "name_en": "Sidama Market",
+   "kind": "landmark",
+   "lat": 9.0294161,
+   "lon": 38.7410393
+  },
+  {
+   "osm_id": "n683827987",
+   "name": "Family Restaurant Debre Zeit",
+   "name_am": "ፋሚሊ ሬስቶራንት ደበረ ዘይት",
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0086405,
+   "lon": 38.7709612
+  },
+  {
+   "osm_id": "n761135766",
+   "name": "Square Garden",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0114271,
+   "lon": 38.7616972
+  },
+  {
+   "osm_id": "n787674549",
+   "name": "MK's Cafe",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.999503,
+   "lon": 38.7849922
+  },
+  {
+   "osm_id": "n828759156",
+   "name": "La Madelene",
+   "name_am": "ላሜዳሊያን",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0117374,
+   "lon": 38.7571816
+  },
+  {
+   "osm_id": "n847244189",
+   "name": "Ambassador Restaurant",
+   "name_am": "አምባሳደር ሬስቶራንት",
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0182104,
+   "lon": 38.7541561
+  },
+  {
+   "osm_id": "n852868564",
+   "name": "Sweet Pastry & Café",
+   "name_am": "ጣፋጭ ኬክና ካፌ",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0157708,
+   "lon": 38.7529773
+  },
+  {
+   "osm_id": "n911086135",
+   "name": "Tady cafe",
+   "name_am": "ቴዲ ካፌ",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.999498,
+   "lon": 38.78482
+  },
+  {
+   "osm_id": "n911086238",
+   "name": "Green View",
+   "name_am": "ግሪን ቪው",
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.003346,
+   "lon": 38.779793
+  },
+  {
+   "osm_id": "n1110691820",
+   "name": "Ghandi Hospital",
+   "name_am": "ጋንዲ የመታሰቢያ ሆስፒታል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0152977,
+   "lon": 38.7554049
+  },
+  {
+   "osm_id": "n1435265678",
+   "name": "Raha Arabiyan Restaurant and Cafe",
+   "name_am": "ራሃ የአረቢያን ምግብ ቤትና ካፌ",
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0043061,
+   "lon": 38.7794741
+  },
+  {
+   "osm_id": "n1594538584",
+   "name": "Lido Hotel",
+   "name_am": "ሊዶ ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0166075,
+   "lon": 38.7474707
+  },
+  {
+   "osm_id": "n1693014162",
+   "name": "Country Chicken",
+   "name_am": "ካንትሪ ቺክን",
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 9.0049427,
+   "lon": 38.7790407
+  },
+  {
+   "osm_id": "n1740751625",
+   "name": "Picnic",
+   "name_am": "ፒክኒክ",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0168851,
+   "lon": 38.753097
+  },
+  {
+   "osm_id": "n1741345133",
+   "name": "Matti Multiplex",
+   "name_am": "ማቲ መልቲፕሌክስ",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9970078,
+   "lon": 38.7865426
+  },
+  {
+   "osm_id": "n2041627193",
+   "name": "Eyoha Cinima",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0103837,
+   "lon": 38.7627642
+  },
+  {
+   "osm_id": "n2057580349",
+   "name": "Variety Restaurant",
+   "name_am": "ቫራይቲ  ሬስቶራንት",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.9964283,
+   "lon": 38.7876387
+  },
+  {
+   "osm_id": "n2245245543",
+   "name": "2000 Habesha",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0013721,
+   "lon": 38.7814717
+  },
+  {
+   "osm_id": "n2479435440",
+   "name": "Mon Amour",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0116987,
+   "lon": 38.7622494
+  },
+  {
+   "osm_id": "n3157961261",
+   "name": "Base Ethiopia",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.004918,
+   "lon": 38.780365
+  },
+  {
+   "osm_id": "n3752876619",
+   "name": "Bambis",
+   "name_am": "ባምቢስ",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0103987,
+   "lon": 38.7688049
+  },
+  {
+   "osm_id": "n4210767242",
+   "name": "Abucci",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0002086,
+   "lon": 38.7829523
+  },
+  {
+   "osm_id": "n4303818516",
+   "name": "IN & OUT Burger",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 8.9976039,
+   "lon": 38.7863919
+  },
+  {
+   "osm_id": "n4303819597",
+   "name": "Karavan Coffee",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.9972198,
+   "lon": 38.7862775
+  },
+  {
+   "osm_id": "n4317971690",
+   "name": "National Theatre Cafe Bar and Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.016397,
+   "lon": 38.7521866
+  },
+  {
+   "osm_id": "n4426482296",
+   "name": "ፍልውሃ 7ተኛ ቀን አድቬንቲስት ቤተክርስቲያን",
+   "name_am": "ፍልውሃ 7ተኛ ቀን አድቬንቲስት ቤተክርስቲያን",
+   "name_en": "Filwoha seventh day Adventist Church",
+   "kind": "landmark",
+   "lat": 9.016209,
+   "lon": 38.755689
+  },
+  {
+   "osm_id": "n4500378118",
+   "name": "Meaza Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0114611,
+   "lon": 38.7619552
+  },
+  {
+   "osm_id": "n4683067995",
+   "name": "Metro Hotel",
+   "name_am": "Metro Hotel",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0294238,
+   "lon": 38.7387594
+  },
+  {
+   "osm_id": "n4685051228",
+   "name": "እሴት ባርና ሬስቶራንት",
+   "name_am": "እሴት ባርና ሬስቶራንት",
+   "name_en": "Eset bar & restaurant",
+   "kind": "restaurant",
+   "lat": 9.0055797,
+   "lon": 38.7807136
+  },
+  {
+   "osm_id": "n4718774489",
+   "name": "Loving Hut",
+   "name_am": null,
+   "name_en": "Loving Hut",
+   "kind": "restaurant",
+   "lat": 8.9985866,
+   "lon": 38.7863024
+  },
+  {
+   "osm_id": "n4799910964",
+   "name": "Yummy Pizza",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.009321,
+   "lon": 38.7652077
+  },
+  {
+   "osm_id": "n4954374566",
+   "name": "Getsh Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.009899,
+   "lon": 38.7709251
+  },
+  {
+   "osm_id": "n4954432369",
+   "name": "Care Cafe",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0098564,
+   "lon": 38.7715611
+  },
+  {
+   "osm_id": "n5032060364",
+   "name": "Mercato",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0296278,
+   "lon": 38.7396038
+  },
+  {
+   "osm_id": "n5117150556",
+   "name": "Clay Pot Resturant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0086626,
+   "lon": 38.7710916
+  },
+  {
+   "osm_id": "n5149309490",
+   "name": "Selam Bus",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0114108,
+   "lon": 38.7618344
+  },
+  {
+   "osm_id": "n5149310089",
+   "name": "Mulu Café",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0134165,
+   "lon": 38.7581265
+  },
+  {
+   "osm_id": "n5149310090",
+   "name": "Belly Burger",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0118628,
+   "lon": 38.7630165
+  },
+  {
+   "osm_id": "n5235146822",
+   "name": "Belmont Classic Cafe and Restaurant",
+   "name_am": null,
+   "name_en": "Belmont Classic Cafe and Restaurant",
+   "kind": "restaurant",
+   "lat": 9.0105542,
+   "lon": 38.7628325
+  },
+  {
+   "osm_id": "n5286150722",
+   "name": "Effoi Pizza (Bole Atlas)",
+   "name_am": null,
+   "name_en": "Effoi Pizza",
+   "kind": "restaurant",
+   "lat": 9.0024377,
+   "lon": 38.7797373
+  },
+  {
+   "osm_id": "n5338558537",
+   "name": "Trinity Hotel",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9984845,
+   "lon": 38.7868635
+  },
+  {
+   "osm_id": "n5439307230",
+   "name": "Prime Deli",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 9.002384,
+   "lon": 38.7797507
+  },
+  {
+   "osm_id": "n5569188825",
+   "name": "Dedebi",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0091666,
+   "lon": 38.7679782
+  },
+  {
+   "osm_id": "n5786021054",
+   "name": "Savor Addis",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.000194,
+   "lon": 38.7817553
+  },
+  {
+   "osm_id": "n6194045585",
+   "name": "Vanquish lounge",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 8.9996914,
+   "lon": 38.7849183
+  },
+  {
+   "osm_id": "n6220897847",
+   "name": "Hanedan Addis Turkish Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 8.9994016,
+   "lon": 38.7831183
+  },
+  {
+   "osm_id": "n6220898097",
+   "name": "Best Western Plus Addis Ababa",
+   "name_am": "ቤስት ዌስተርን ፕላሥ አዲስ አበባ",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9968941,
+   "lon": 38.7859708
+  },
+  {
+   "osm_id": "n6249872985",
+   "name": "ቪሌጅ ካፌ",
+   "name_am": null,
+   "name_en": "Village Cafe ቪሌጅ ካፌ",
+   "kind": "restaurant",
+   "lat": 9.0122839,
+   "lon": 38.7625905
+  },
+  {
+   "osm_id": "n6597238394",
+   "name": "Wuha metecha",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0297641,
+   "lon": 38.7375879
+  },
+  {
+   "osm_id": "n6624500169",
+   "name": "M.W. Hotel",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9983253,
+   "lon": 38.7867626
+  },
+  {
+   "osm_id": "n6776176385",
+   "name": "KKFC Kaptain K Fried Chicken",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 9.0015298,
+   "lon": 38.7799958
+  },
+  {
+   "osm_id": "n6782303635",
+   "name": "Mado Hotel",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0004823,
+   "lon": 38.7831031
+  },
+  {
+   "osm_id": "n6939515762",
+   "name": "Ambience",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.9970692,
+   "lon": 38.7870028
+  },
+  {
+   "osm_id": "n7047533158",
+   "name": "Dolce Caffe & Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 8.9989416,
+   "lon": 38.7838721
+  },
+  {
+   "osm_id": "n7047553147",
+   "name": "Sudanese Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 8.9984281,
+   "lon": 38.7847022
+  },
+  {
+   "osm_id": "n7124146019",
+   "name": "Le Cafe",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0099273,
+   "lon": 38.7724597
+  },
+  {
+   "osm_id": "n7124285667",
+   "name": "Tryst Cafe",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.004962,
+   "lon": 38.7808281
+  },
+  {
+   "osm_id": "n7179530542",
+   "name": "Shawarma kebab",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 8.9986793,
+   "lon": 38.7860621
+  },
+  {
+   "osm_id": "n7950704389",
+   "name": "Prïmaverà",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.9984626,
+   "lon": 38.7863889
+  },
+  {
+   "osm_id": "n8025765460",
+   "name": "Sabon Hotel",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9992037,
+   "lon": 38.7839589
+  },
+  {
+   "osm_id": "n8025806806",
+   "name": "Sabon Hotel",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9997998,
+   "lon": 38.7840093
+  },
+  {
+   "osm_id": "n8152231820",
+   "name": "ደብረ ሰላም ቅዱስ እስጢፋኖስ ቤተ ክርስቲያን በ፲፱፻፱ ዓ.ም ተመሠረተ",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0121661,
+   "lon": 38.763598
+  },
+  {
+   "osm_id": "n8263302415",
+   "name": "BOSS BURGER",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 8.997606,
+   "lon": 38.7848763
+  },
+  {
+   "osm_id": "n9132045548",
+   "name": "Elsa Kolo",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0053358,
+   "lon": 38.780957
+  },
+  {
+   "osm_id": "n9199699489",
+   "name": "Hibir Bar & Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0045628,
+   "lon": 38.7805879
+  },
+  {
+   "osm_id": "n9202411161",
+   "name": "Grace Plaza",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0011836,
+   "lon": 38.7821726
+  },
+  {
+   "osm_id": "n9216111837",
+   "name": "Lela Sishu",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0053305,
+   "lon": 38.78061
+  },
+  {
+   "osm_id": "n10231010708",
+   "name": "Green Gold",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0106364,
+   "lon": 38.769742
+  },
+  {
+   "osm_id": "n10845715707",
+   "name": "ቢ ሞር አፓርትመንት ሆቴል",
+   "name_am": null,
+   "name_en": "BMORE Apartment Hotel",
+   "kind": "landmark",
+   "lat": 9.0093082,
+   "lon": 38.7665235
+  },
+  {
+   "osm_id": "n11889040619",
+   "name": "Wow Burger",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 8.9973147,
+   "lon": 38.7867464
+  },
+  {
+   "osm_id": "n12172350016",
+   "name": "Kaldi",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.9987663,
+   "lon": 38.7853003
+  },
+  {
+   "osm_id": "n12174712332",
+   "name": "Maya",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.9983975,
+   "lon": 38.7858507
+  },
+  {
+   "osm_id": "n13441818901",
+   "name": "The Blue Hen",
+   "name_am": "ዘ ብሉ ሄን",
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 9.0115592,
+   "lon": 38.7679733
+  },
+  {
+   "osm_id": "n13551202901",
+   "name": "Korma Grill",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0031074,
+   "lon": 38.7791906
+  },
+  {
+   "osm_id": "n13983174506",
+   "name": "Yegna",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0121107,
+   "lon": 38.7611352
+  },
+  {
+   "osm_id": "n14004583798",
+   "name": "Kin Burger",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 9.0046171,
+   "lon": 38.78031
+  },
+  {
+   "osm_id": "n14018584435",
+   "name": "Panda",
+   "name_am": null,
+   "name_en": null,
+   "kind": "cafe",
+   "lat": 8.99828,
+   "lon": 38.7847379
+  },
+  {
+   "osm_id": "n14050119595",
+   "name": "KK Pizza",
+   "name_am": null,
+   "name_en": null,
+   "kind": "fast_food",
+   "lat": 9.0015598,
+   "lon": 38.7799514
+  },
+  {
+   "osm_id": "w8110602",
+   "name": "Addis Ababa Stadium",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.013331,
+   "lon": 38.7564319
+  },
+  {
+   "osm_id": "w42553652",
+   "name": "National Theatre",
+   "name_am": "የኢትዮጵያ ብሔራዊ ቲያትር",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0160583,
+   "lon": 38.7521721
+  },
+  {
+   "osm_id": "w42981918",
+   "name": "St.Estifanos",
+   "name_am": "እስጢፋኖስ ቤተ ክርስቲያን",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0121681,
+   "lon": 38.7635661
+  },
+  {
+   "osm_id": "w49911418",
+   "name": "Mearab Hotel",
+   "name_am": "ምዕራብ ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0295281,
+   "lon": 38.7374819
+  },
+  {
+   "osm_id": "w50807864",
+   "name": "Ethiopia Hotel",
+   "name_am": "ኢትዮጵያ ሆቴል",
+   "name_en": "Ethiopia Hotel",
+   "kind": "landmark",
+   "lat": 9.0170202,
+   "lon": 38.7535056
+  },
+  {
+   "osm_id": "w50807894",
+   "name": "Harambee Hotel",
+   "name_am": "ሐራምቤ ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0177847,
+   "lon": 38.7544033
+  },
+  {
+   "osm_id": "w50833478",
+   "name": "ጋንዲ ሆስፒታል",
+   "name_am": null,
+   "name_en": "Ghandi Hospital",
+   "kind": "landmark",
+   "lat": 9.0153297,
+   "lon": 38.7554911
+  },
+  {
+   "osm_id": "w58670010",
+   "name": "Marriott Executive Apartments",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0104391,
+   "lon": 38.7649452
+  },
+  {
+   "osm_id": "w59591036",
+   "name": "Le Grand Reve",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0002549,
+   "lon": 38.7817201
+  },
+  {
+   "osm_id": "w151357816",
+   "name": "Edna Mall",
+   "name_am": "ኤድና ሞል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9971125,
+   "lon": 38.7866613
+  },
+  {
+   "osm_id": "w151431279",
+   "name": "መስቀል አደባባይ",
+   "name_am": "መስቀል አደባባይ",
+   "name_en": "Meskel Square",
+   "kind": "landmark",
+   "lat": 9.0102406,
+   "lon": 38.7612553
+  },
+  {
+   "osm_id": "w157062064",
+   "name": "Molla Appartment Hotel",
+   "name_am": "ሞላ አፓርትመንት ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0048381,
+   "lon": 38.7794313
+  },
+  {
+   "osm_id": "w157107362",
+   "name": "Betsegah Obstetric and Gynacological Special Hospital",
+   "name_am": "በፀጋህ የፅንስና የማህፀን ልዩ ሆስፒታል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0045666,
+   "lon": 38.7773263
+  },
+  {
+   "osm_id": "w158895438",
+   "name": "Hotel D'Leopol",
+   "name_am": "ደ ሊኦፖል ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0094707,
+   "lon": 38.7726337
+  },
+  {
+   "osm_id": "w184954488",
+   "name": "Haimi Apartment Hotel",
+   "name_am": "ሃይሚ አፓርትመንት ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 8.9994833,
+   "lon": 38.785137
+  },
+  {
+   "osm_id": "w199677809",
+   "name": "Atlas International Hotel",
+   "name_am": "አትላስ ኢንተርናሽናል ሆቴል",
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0037165,
+   "lon": 38.7806712
+  },
+  {
+   "osm_id": "w202426504",
+   "name": "የቀይ ሽብር ሰማዕታት መታሰቢያ ሙዚየም",
+   "name_am": "የቀይ ሽብር ሰማዕታት መታሰቢያ ሙዚየም",
+   "name_en": "Red Terror Martyrs' Memorial Museum",
+   "kind": "landmark",
+   "lat": 9.010194,
+   "lon": 38.7629728
+  },
+  {
+   "osm_id": "w202560018",
+   "name": "አዲስ አበባ ሙዚየም",
+   "name_am": "አዲስ አበባ ሙዚየም",
+   "name_en": "Addis Ababa Museum",
+   "kind": "landmark",
+   "lat": 9.0093236,
+   "lon": 38.7627594
+  },
+  {
+   "osm_id": "w383501396",
+   "name": "Olympiacos",
+   "name_am": "ኦሎምፒያኮስ",
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0085993,
+   "lon": 38.7684515
+  },
+  {
+   "osm_id": "w678129398",
+   "name": "Hyatt Regency Addis Ababa",
+   "name_am": "ህያት ሪጀንሲ ኢንተርናሽናል ሆቴል",
+   "name_en": "Hyatt Regency Addis Ababa",
+   "kind": "landmark",
+   "lat": 9.0102192,
+   "lon": 38.7639129
+  },
+  {
+   "osm_id": "w717913112",
+   "name": "Yordanos Hotel",
+   "name_am": null,
+   "name_en": null,
+   "kind": "landmark",
+   "lat": 9.0108642,
+   "lon": 38.7698476
+  },
+  {
+   "osm_id": "w1137324646",
+   "name": "Ambassador Park",
+   "name_am": "አምባሳደር ፓርክ",
+   "name_en": "Ambassador Park",
+   "kind": "landmark",
+   "lat": 9.0181681,
+   "lon": 38.7548753
+  },
+  {
+   "osm_id": "w1203333177",
+   "name": "Union Cocktail Bar & Restaurant",
+   "name_am": null,
+   "name_en": null,
+   "kind": "restaurant",
+   "lat": 9.0093546,
+   "lon": 38.7622789
+  },
+  {
+   "osm_id": "w1534984979",
+   "name": "ኢሬቻ ፓርክ",
+   "name_am": "ኢሬቻ ፓርክ",
+   "name_en": "Irreechaa Park",
+   "kind": "landmark",
+   "lat": 9.0120185,
+   "lon": 38.7648845
+  },
+  {
+   "osm_id": "w1534984980",
+   "name": "የወንዝ ዳርቻ ፓርክ",
+   "name_am": "የወንዝ ዳርቻ ፓርክ",
+   "name_en": "River Side Park",
+   "kind": "landmark",
+   "lat": 9.0123448,
+   "lon": 38.7651251
+  }
+ ],
+ "streets": [
+  {
+   "lat": 9.02971,
+   "lon": 38.73972,
+   "name_en": "Tekelehaymanot",
+   "name_am": "Tekelehaymanot"
+  },
+  {
+   "lat": 9.028268,
+   "lon": 38.739871,
+   "name_en": "Dej Wolde Michael Street",
+   "name_am": "ደጃዝማች ወልደ ሚካኤል መንገድ"
+  },
+  {
+   "lat": 9.026447,
+   "lon": 38.741172,
+   "name_en": "Dej Wolde Michael Street",
+   "name_am": "ደጃ/ች ወልደ ሚካኤል መንገድ"
+  },
+  {
+   "lat": 9.025008,
+   "lon": 38.742921,
+   "name_en": "Dej Wolde Michael Street",
+   "name_am": "ደጃ/ች ወልደ ሚካኤል መንገድ"
+  },
+  {
+   "lat": 9.02307,
+   "lon": 38.744008,
+   "name_en": "Dej Wolde Michael Street",
+   "name_am": "ደጃ/ች ወልደ ሚካኤል መንገድ"
+  },
+  {
+   "lat": 9.020896,
+   "lon": 38.744498,
+   "name_en": "Dej Wolde Michael Street",
+   "name_am": "ደጃ/ች ወልደ ሚካኤል መንገድ"
+  },
+  {
+   "lat": 9.018651,
+   "lon": 38.744524,
+   "name_en": "Dej Wolde Michael Street",
+   "name_am": "ደጃ/ች ወልደ ሚካኤል መንገድ"
+  },
+  {
+   "lat": 9.01643,
+   "lon": 38.744568,
+   "name_en": "Goma Kuteba",
+   "name_am": "ጎማ ቁጠባ"
+  },
+  {
+   "lat": 9.016631,
+   "lon": 38.746834,
+   "name_en": "Sudan Street",
+   "name_am": "ሱዳን መንገድ"
+  },
+  {
+   "lat": 9.016833,
+   "lon": 38.749101,
+   "name_en": "Sudan Street",
+   "name_am": "ሱዳን መንገድ"
+  },
+  {
+   "lat": 9.017034,
+   "lon": 38.751368,
+   "name_en": "Sudan Street",
+   "name_am": "ሱዳን መንገድ"
+  },
+  {
+   "lat": 9.017245,
+   "lon": 38.753629,
+   "name_en": "Yohanes Street",
+   "name_am": "ዮሃንስ መንገድ"
+  },
+  {
+   "lat": 9.016156,
+   "lon": 38.755377,
+   "name_en": "Ras Desta Damtew Street",
+   "name_am": "ራስ ደስታ ዳምጠው መንገድ"
+  },
+  {
+   "lat": 9.014446,
+   "lon": 38.756855,
+   "name_en": "Ras Desta Damtew Street",
+   "name_am": "ራስ ደስታ ዳምጠው መንገድ"
+  },
+  {
+   "lat": 9.012767,
+   "lon": 38.758368,
+   "name_en": "Ras Desta Damtew Street",
+   "name_am": "ራስ ደስታ ዳምጠው መንገድ"
+  },
+  {
+   "lat": 9.011297,
+   "lon": 38.759837,
+   "name_en": "Meshuwalekiya",
+   "name_am": "መሿለኪያ"
+  },
+  {
+   "lat": 9.010927,
+   "lon": 38.762081,
+   "name_en": "Meshuwalekiya",
+   "name_am": "መሿለኪያ"
+  },
+  {
+   "lat": 9.010726,
+   "lon": 38.764347,
+   "name_en": "Jomo Kenyatta Avenue",
+   "name_am": "ጆሞ ኬኒያታ ጎዳና"
+  },
+  {
+   "lat": 9.010523,
+   "lon": 38.766614,
+   "name_en": "Jomo Kenyatta Avenue",
+   "name_am": "ጆሞ ኬኒያታ ጎዳና"
+  },
+  {
+   "lat": 9.010304,
+   "lon": 38.768879,
+   "name_en": "Jomo Kenyatta Avenue",
+   "name_am": "ጆሞ ኬኒያታ ጎዳና"
+  },
+  {
+   "lat": 9.010051,
+   "lon": 38.771141,
+   "name_en": "Jomo Kenyatta Avenue",
+   "name_am": "ጆሞ ኬኒያታ ጎዳና"
+  },
+  {
+   "lat": 9.0094,
+   "lon": 38.773105,
+   "name_en": "Kazanchis",
+   "name_am": "Kazanchis"
+  },
+  {
+   "lat": 9.008214,
+   "lon": 38.775033,
+   "name_en": "Kazanchis",
+   "name_am": "Kazanchis"
+  },
+  {
+   "lat": 9.006911,
+   "lon": 38.77671,
+   "name_en": "Ghana Street",
+   "name_am": "ጋና መንገድ"
+  },
+  {
+   "lat": 9.0052,
+   "lon": 38.778121,
+   "name_en": "Ghana Street",
+   "name_am": "ጋና መንገድ"
+  },
+  {
+   "lat": 9.003918,
+   "lon": 38.77998,
+   "name_en": "Ghana Street",
+   "name_am": "ጋና መንገድ"
+  },
+  {
+   "lat": 9.002262,
+   "lon": 38.781518,
+   "name_en": "Namibia Avenue",
+   "name_am": "ካሜሩን መንገድ"
+  },
+  {
+   "lat": 9.000628,
+   "lon": 38.783081,
+   "name_en": "Namibia Avenue",
+   "name_am": "ካሜሩን መንገድ"
+  },
+  {
+   "lat": 8.999246,
+   "lon": 38.784868,
+   "name_en": "Namibia Avenue",
+   "name_am": "ካሜሩን መንገድ"
+  },
+  {
+   "lat": 8.997791,
+   "lon": 38.786584,
+   "name_en": "Ghiliffalegn Stream",
+   "name_am": "Ghiliffalegn Stream"
+  }
+ ]
+}

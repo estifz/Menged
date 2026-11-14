@@ -1,0 +1,28 @@
+# Local Postgres for development (optional: the app also works with Neon).
+#   docker compose up -d db
+#   DATABASE_URL=postgresql://menged:menged@localhost:5432/menged
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: menged
+      POSTGRES_PASSWORD: menged
+      POSTGRES_DB: menged
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # The backend itself, for a server deployment. Reads .env.
+  app:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - tts-cache:/app/var
+    profiles: ["server"]
+
+volumes:
+  pgdata:
+  tts-cache:
