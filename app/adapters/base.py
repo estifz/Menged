@@ -27,11 +27,11 @@ class OutMessage:
     text: str  # rendered in the user's language
     params: dict = field(default_factory=dict)
     priority: str = "normal"  # high | normal | low
-    silent: bool = False  # deliver without sound
+    silent: bool = False
     voice: bool = True  # also send as a voice note when the user has voice on
     actions: list[Action] = field(default_factory=list)
     key: str | None = None  # one-shot dedupe key within a trip
-    location: tuple[float, float] | None = None  # optional map pin
+    location: tuple[float, float] | None = None
 
     def to_dict(self) -> dict:
         return {

@@ -82,7 +82,6 @@ async def deliver(session: AsyncSession, user: User, trip: Trip | None, msg: Out
         log.exception("send failed for user %s", user.id)
 
 
-# --- Rules -------------------------------------------------------------------
 def _rule_arrived(trip: Trip, user: User, ctx: Ctx, sent: set[str]) -> OutMessage | None:
     if ctx.became == Status.ARRIVED and "arrived" not in sent:
         return make("arrived", user, Priority.HIGH, key="arrived", dest=trip.dest_name)
@@ -210,7 +209,6 @@ def _rule_still_here(trip: Trip, user: User, ctx: Ctx, sent: set[str], last_sent
     return msg
 
 
-# --- Evaluation ----------------------------------------------------------------
 async def _sent_keys(session: AsyncSession, trip: Trip) -> set[str]:
     rows = await session.scalars(
         select(Notification.key).where(Notification.trip_id == trip.id, Notification.key.is_not(None))

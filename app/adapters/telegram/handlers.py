@@ -39,7 +39,6 @@ STATIC_POS_MAX_AGE_S = 600
 LEVEL_CYCLE = ["normal", "chatty", "quiet"]
 
 
-# --- Helpers -----------------------------------------------------------------------
 async def load_user(session, message_or_cb) -> User:
     chat = message_or_cb.message.chat if isinstance(message_or_cb, CallbackQuery) else message_or_cb.chat
     lang = message_or_cb.from_user.language_code if message_or_cb.from_user else None
@@ -72,7 +71,6 @@ async def current_position(state: FSMContext, trip: Trip | None) -> tuple[float,
     return None
 
 
-# --- /start, /help, language --------------------------------------------------------
 @router.message(CommandStart())
 async def cmd_start(message: Message, state: FSMContext) -> None:
     async with session_scope() as session:
@@ -100,7 +98,6 @@ async def cb_language(cb: CallbackQuery) -> None:
         await cb.message.answer(render("ready", user.language), reply_markup=main_keyboard(user.language))
 
 
-# --- /settings ------------------------------------------------------------------------
 def settings_text(user: User) -> str:
     lang = user.language
     return render(
@@ -140,7 +137,6 @@ async def cb_settings(cb: CallbackQuery) -> None:
             await cb.message.answer(render("ask_destination", user.language), reply_markup=main_keyboard(user.language))
 
 
-# --- Trip: destination ----------------------------------------------------------------
 @router.message(Command("trip"))
 async def cmd_trip(message: Message) -> None:
     async with session_scope() as session:
@@ -197,7 +193,6 @@ async def cb_destination(cb: CallbackQuery, state: FSMContext) -> None:
     await state.update_data(candidates=None)
 
 
-# --- Location ---------------------------------------------------------------------------
 async def handle_point(message: Message, state: FSMContext, live: bool) -> None:
     loc = message.location
     async with session_scope() as session:
@@ -240,7 +235,6 @@ async def on_live_update(message: Message, state: FSMContext) -> None:
     await handle_point(message, state, live=True)
 
 
-# --- Buttons ------------------------------------------------------------------------------
 @router.message(F.text.in_(all_variants("btn_where")))
 async def btn_where(message: Message, state: FSMContext) -> None:
     async with session_scope() as session:
@@ -335,7 +329,6 @@ async def cb_food(cb: CallbackQuery, state: FSMContext) -> None:
             await cb.message.answer(render("offer_off", user.language))
 
 
-# --- /simulate (demo) -------------------------------------------------------------------
 @router.message(Command("simulate"))
 async def cmd_simulate(message: Message) -> None:
     admins = get_settings().admin_ids
@@ -353,7 +346,6 @@ async def cmd_simulate(message: Message) -> None:
     await message.answer(render("simulate_start", user.language, dest=html.escape(dest)), reply_markup=main_keyboard(user.language))
 
 
-# --- Free text = destination ------------------------------------------------------------
 @router.message(F.text & ~F.text.startswith("/"))
 async def on_text(message: Message, state: FSMContext) -> None:
     query = message.text.strip()

@@ -65,7 +65,6 @@ def message_out(n: Notification) -> schemas.MessageOut:
     )
 
 
-# --- Devices & settings ---------------------------------------------------------------
 @router.post("/devices", response_model=schemas.DeviceOut)
 async def register_device(body: schemas.DeviceIn, session: AsyncSession = Depends(get_session)):
     token = secrets.token_urlsafe(32)
@@ -93,7 +92,6 @@ async def put_settings(body: schemas.Settings, user: User = Depends(current_user
     return body
 
 
-# --- Places ------------------------------------------------------------------------------
 @router.get("/places/search", response_model=list[schemas.PlaceOut])
 async def search_places(q: str = Query(min_length=2), user: User = Depends(current_user)):
     try:
@@ -124,7 +122,6 @@ async def where(lat: float, lon: float, user: User = Depends(current_user), sess
     return schemas.WhereOut(text=await engine.where_am_i(session, user, lat, lon, trip))
 
 
-# --- Trips ---------------------------------------------------------------------------------
 @router.post("/trips", response_model=schemas.TripOut, status_code=201)
 async def create_trip(body: schemas.TripIn, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)):
     user = await session.merge(user)

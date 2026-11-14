@@ -54,7 +54,7 @@ async def search(query: str, lang: str = "en", limit: int = 3) -> list[PlaceCand
             r = await client().get(f"{s.nominatim_url}/search", params=params)
         r.raise_for_status()
         data = r.json()
-    except Exception as e:  # network, HTTP, JSON
+    except Exception as e:
         raise ServiceError(f"nominatim search failed: {e}") from e
     results = []
     for item in data:

@@ -57,7 +57,6 @@ class TimestampMixin:
     created_at: Mapped[datetime] = mapped_column(UTCDateTime(), default=utcnow, nullable=False)
 
 
-# --- Trip status values ---------------------------------------------------
 class Status:
     CREATED = "created"
     ROUTED = "routed"
@@ -117,7 +116,6 @@ class Trip(TimestampMixin, Base):
     ended_at: Mapped[datetime | None] = mapped_column(UTCDateTime(), nullable=True)
     end_reason: Mapped[str | None] = mapped_column(String(32), nullable=True)
 
-    # Engine state
     smooth_var: Mapped[float | None] = mapped_column(Float, nullable=True)
     speed_ema_mps: Mapped[float | None] = mapped_column(Float, nullable=True)
     distance_left_m: Mapped[float | None] = mapped_column(Float, nullable=True)
@@ -128,7 +126,6 @@ class Trip(TimestampMixin, Base):
     pending_state: Mapped[str | None] = mapped_column(String(16), nullable=True)
     pending_count: Mapped[int] = mapped_column(Integer, default=0)
 
-    # Bot extras
     card_message_id: Mapped[int | None] = mapped_column(BigInteger, nullable=True)
     food_offers_off: Mapped[bool] = mapped_column(Boolean, default=False)
     last_food_offer_at: Mapped[datetime | None] = mapped_column(UTCDateTime(), nullable=True)

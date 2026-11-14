@@ -120,7 +120,6 @@ class Route:
         return [self.point_at(i * step) for i in range(max_points)]
 
 
-# --- GPS smoothing -----------------------------------------------------------
 PROCESS_NOISE_MPS = 3.0  # how fast we let the estimate move, in m/s
 
 

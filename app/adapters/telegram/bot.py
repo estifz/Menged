@@ -87,7 +87,7 @@ async def _poll_forever() -> None:
             await bot.delete_webhook(drop_pending_updates=False)
             log.info("bot polling started")
             await dp.start_polling(bot, handle_signals=False, allowed_updates=dp.resolve_used_update_types())
-            return  # polling stopped normally
+            return
         except asyncio.CancelledError:
             raise
         except Exception as e:

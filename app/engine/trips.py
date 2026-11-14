@@ -51,7 +51,6 @@ def route_of(trip: Trip) -> Route | None:
     return route
 
 
-# --- Users -----------------------------------------------------------------------
 async def get_or_create_telegram_user(session: AsyncSession, chat_id: int, lang_hint: str | None = None) -> tuple[User, bool]:
     user = await session.scalar(select(User).where(User.telegram_chat_id == chat_id))
     if user:
@@ -72,7 +71,6 @@ async def open_trip(session: AsyncSession, user_id: int) -> Trip | None:
     )
 
 
-# --- Destination search ------------------------------------------------------------
 async def search_destination(query: str, lang: str = "en", limit: int = 3) -> list[PlaceCandidate]:
     """Offline gazetteer (instant, typo-tolerant) → Nominatim → Photon.
 
@@ -102,7 +100,6 @@ async def search_destination(query: str, lang: str = "en", limit: int = 3) -> li
     return merged[:limit]
 
 
-# --- Trip lifecycle ----------------------------------------------------------------
 async def create_trip(
     session: AsyncSession,
     user: User,
@@ -241,7 +238,6 @@ def _forget(trip_id: int) -> None:
     _card_last.pop(trip_id, None)
 
 
-# --- Location points -------------------------------------------------------------
 @dataclass
 class Progress:
     along_m: float | None
@@ -322,7 +318,6 @@ async def add_location(
     if trip.status == Status.CREATED:
         await route_trip(session, trip, user, lat, lon, now)
 
-    # Smooth the position and learn the real speed.
     dt = (recorded_at - trip.last_seen_at).total_seconds() if trip.last_seen_at else 0.0
     slat, slon, var = kalman_step(trip.last_lat, trip.last_lon, trip.smooth_var, dt, lat, lon, accuracy_m, trip.speed_ema_mps)
     speed = None
@@ -369,7 +364,7 @@ async def add_location(
         street = await nominatim.reverse(slat, slon, user.language)
         if street:
             if trip.first_street is None:
-                trip.first_street = street  # where the trip began: never announced
+                trip.first_street = street
             if street != trip.current_street:
                 street_changed = True
                 trip.current_street = street
@@ -404,7 +399,6 @@ async def add_location(
     return sent
 
 
-# --- Trip card -------------------------------------------------------------------
 def card_text(user: User, trip: Trip) -> str:
     if trip.status in (Status.CREATED, Status.ROUTED) or trip.last_lat is None:
         return render("card_waiting", user.language, dest=trip.dest_name)
@@ -439,7 +433,6 @@ async def _close_card(user: User, trip: Trip) -> None:
         log.exception("closing trip card failed")
 
 
-# --- Timer (every 30 s) -------------------------------------------------------------
 async def tick(session: AsyncSession, now: datetime | None = None) -> None:
     """Stale/ended checks and time-based rules for trips with no new points."""
     s = get_settings()
@@ -490,7 +483,6 @@ async def purge_old_points(session: AsyncSession, now: datetime | None = None) -
     return result.rowcount or 0
 
 
-# --- Questions the user can ask -------------------------------------------------------
 async def where_am_i(session: AsyncSession, user: User, lat: float, lon: float, trip: Trip | None = None) -> str:
     lang = user.language
     street = None

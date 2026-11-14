@@ -39,7 +39,7 @@ async def test_full_trip_sends_rules_in_order(db, channel, scenario):
     assert len(channel.sent) == len(rows)  # everything logged was delivered
 
 
-async def test_rename_time_left_uses_real_speed(db, channel, scenario):
+async def test_time_left_uses_real_speed(db, channel, scenario):
     """A slow minibus (half the routed speed) gets 'about 10 minutes' later."""
     tid = await start_trip(await make_user())
     for i in range(12):
