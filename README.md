@@ -97,12 +97,20 @@ Covers geometry, the Amharic normaliser and offline search, every rule and the
 anti-overload limits on a synthetic ride, stale/timeout handling, the privacy
 purge, the REST API, and a full offline replay of the demo trip.
 
-## Deploying later (webhook mode)
+## Deploying on Render (webhook mode)
 
-`Dockerfile` installs ffmpeg and runs migrations on start. Set
-`TELEGRAM_MODE=webhook`, `WEBHOOK_BASE_URL=https://…`, `WEBHOOK_SECRET=…`.
-Free hosting tiers that sleep when idle will stop the 30-second timer, so for the
-hackathon run the bot from a laptop in polling mode.
+`render.yaml` is a Render Blueprint: push the repo to GitHub, then in Render
+choose **New + → Blueprint**, pick the repo, fill in the four secrets
+(`DATABASE_URL`, `DATABASE_URL_POOLED`, `TELEGRAM_BOT_TOKEN`, `ORS_API_KEY`)
+and apply. The Dockerfile installs ffmpeg and runs migrations on start; the bot
+registers its webhook from Render's `RENDER_EXTERNAL_URL`.
+
+Render's free plan sleeps after 15 idle minutes, which stops the 30-second
+timer (stale-location and timeout alerts). Keep it awake with a free uptime
+monitor (e.g. UptimeRobot) that requests `/health` every 5 minutes.
+
+Don't run the bot locally in polling mode while it is deployed: polling deletes
+the webhook. If that happens, restart the Render service to re-register it.
 
 ## Layout
 

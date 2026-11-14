@@ -1,0 +1,31 @@
+# Render Blueprint: Dashboard → New + → Blueprint → pick this repo → Apply.
+# Render builds the Dockerfile (ffmpeg included), runs migrations on start and
+# sets RENDER_EXTERNAL_URL, which the bot uses to register its webhook.
+services:
+  - type: web
+    name: menged
+    runtime: docker
+    plan: free
+    region: frankfurt            # closest Render region to Addis Ababa
+    healthCheckPath: /health
+    autoDeploy: true             # every push to the connected branch redeploys
+    envVars:
+      - key: TELEGRAM_MODE
+        value: webhook
+      - key: WEBHOOK_SECRET
+        generateValue: true      # Render creates a random secret
+      - key: TTS_ENABLED
+        value: "true"
+      - key: USER_AGENT
+        value: MengedBot/1.0
+      - key: ADMIN_TELEGRAM_IDS
+        value: ""                # your Telegram user id(s), to restrict /simulate
+      # Secrets: Render asks for these when you apply the blueprint.
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_URL_POOLED
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: ORS_API_KEY
+        sync: false

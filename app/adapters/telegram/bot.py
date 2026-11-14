@@ -52,7 +52,10 @@ async def start_bot() -> None:
 
 async def _set_webhook_forever() -> None:
     s = get_settings()
-    url = s.webhook_base_url.rstrip("/") + WEBHOOK_PATH
+    if not s.public_base_url:
+        log.error("TELEGRAM_MODE=webhook but neither WEBHOOK_BASE_URL nor RENDER_EXTERNAL_URL is set; bot disabled")
+        return
+    url = s.public_base_url + WEBHOOK_PATH
     while True:
         try:
             assert bot is not None and dp is not None

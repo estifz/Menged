@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     telegram_mode: str = "polling"  # "polling" (local) or "webhook" (production)
     webhook_base_url: str = ""  # e.g. https://menged.onrender.com
     webhook_secret: str = "change-me"
+    render_external_url: str = ""  # set automatically by Render; used when WEBHOOK_BASE_URL is empty
     admin_telegram_ids: str = ""  # comma-separated user ids allowed to use /simulate
 
     ors_api_key: str = ""
@@ -75,6 +76,11 @@ class Settings(BaseSettings):
     @property
     def time_left_marks(self) -> list[int]:
         return sorted((int(x) for x in self.time_left_marks_min.split(",") if x.strip()), reverse=True)
+
+    @property
+    def public_base_url(self) -> str:
+        """Where Telegram can reach us in webhook mode."""
+        return (self.webhook_base_url or self.render_external_url).rstrip("/")
 
     @property
     def admin_ids(self) -> set[int]:
