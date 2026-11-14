@@ -18,6 +18,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.adapters import base as channels
 from app.config import get_settings
+from app.db import after_commit
 from app.demo.data import load_demo
 from app.engine import notifications as notif
 from app.engine.notifications import Ctx, make
@@ -130,6 +131,67 @@ async def create_trip(
     return trip
 
 
+_background: set[asyncio.Task] = set()
+
+
+def _spawn(coro) -> None:
+    task = asyncio.create_task(coro)
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+
+
+async def drain_background() -> None:
+    """Wait for background work (used by tests and the simulator)."""
+    while _background:
+        await asyncio.gather(*list(_background), return_exceptions=True)
+
+
+def _add_places(session: AsyncSession, trip: Trip, line: Route | None, places, existing: list[TripPlace] = ()) -> int:
+    added = 0
+    known = list(existing)
+    for p in places:
+        if any(k.osm_id == p.osm_id or (k.name == p.name and haversine(k.lat, k.lon, p.lat, p.lon) < 80) for k in known):
+            continue
+        proj = line.project(p.lat, p.lon) if line else None
+        row = TripPlace(
+            trip_id=trip.id,
+            osm_id=p.osm_id,
+            name=p.name,
+            name_am=p.name_am,
+            name_en=p.name_en,
+            kind=p.kind,
+            lat=p.lat,
+            lon=p.lon,
+            distance_from_route_m=proj.offset_m if proj else None,
+            along_route_m=proj.along_m if proj else None,
+        )
+        session.add(row)
+        known.append(row)
+        added += 1
+    return added
+
+
+async def _enrich_places(trip_id: int, points: list[tuple[float, float]]) -> None:
+    """Add Overpass places the offline list doesn't have. Best effort."""
+    try:
+        found = await overpass.places_along(points, get_settings().route_corridor_m)
+    except ServiceError as e:
+        log.info("Overpass top-up skipped for trip %s: %s", trip_id, e)
+        return
+    from app.db import session_scope
+
+    try:
+        async with session_scope() as session:
+            async with trip_lock(trip_id):
+                trip = await session.get(Trip, trip_id)
+                if trip is None or trip.status not in Status.OPEN:
+                    return
+                added = _add_places(session, trip, route_of(trip), found, await _places(session, trip))
+        log.info("Overpass added %d places to trip %s", added, trip_id)
+    except Exception:
+        log.exception("saving Overpass places failed for trip %s", trip_id)
+
+
 def _straight_line(start: tuple[float, float], dest: tuple[float, float]) -> routing.RouteResult:
     d = haversine(*start, *dest) * 1.3  # streets are longer than a straight line
     return routing.RouteResult(encode([start, dest]), d, d / DEFAULT_SPEED_MPS, "straight")
@@ -166,34 +228,19 @@ async def route_trip(session: AsyncSession, trip: Trip, user: User, lat: float, 
     trip.time_left_s = route.duration_s
     trip.status = Status.ROUTED
 
-    # Places along the corridor: one Overpass query per trip, cached in trip_places.
+    # Places along the corridor, cached in trip_places. The offline list answers
+    # instantly; Overpass only tops it up in the background, because the public
+    # servers are often slow or blocked from cloud hosts and must never hold up
+    # a trip (or a Telegram webhook call).
     line = route_of(trip)
-    places: list[overpass.OsmPlace] = []
     if route.provider == "demo" and demo is not None:
-        places = [overpass.OsmPlace(**p) for p in demo.places]
-    elif line is not None and route.provider != "straight":
-        try:
-            places = await overpass.places_along(line.simplified(), s.route_corridor_m)
-        except ServiceError as e:
-            log.warning("%s", e)
-            if demo is not None and demo.matches(start, dest):
-                places = [overpass.OsmPlace(**p) for p in demo.places]
-    for p in places:
-        proj = line.project(p.lat, p.lon) if line else None
-        session.add(
-            TripPlace(
-                trip_id=trip.id,
-                osm_id=p.osm_id,
-                name=p.name,
-                name_am=p.name_am,
-                name_en=p.name_en,
-                kind=p.kind,
-                lat=p.lat,
-                lon=p.lon,
-                distance_from_route_m=proj.offset_m if proj else None,
-                along_route_m=proj.along_m if proj else None,
-            )
-        )
+        _add_places(session, trip, line, [overpass.OsmPlace(**p) for p in demo.places])
+    elif line is not None:
+        points = line.simplified()
+        _add_places(session, trip, line, gazetteer.along_route(points, s.route_corridor_m))
+        if route.provider != "straight":
+            trip_id = trip.id
+            after_commit(session, lambda: _spawn(_enrich_places(trip_id, points)))
     await session.flush()
 
     if route_failed:
@@ -314,6 +361,9 @@ async def add_location(
         if trip.status in Status.TRACKING:
             trip.last_seen_at = recorded_at
         return []
+
+    if trip.last_seen_at and recorded_at < trip.last_seen_at:
+        return []  # arrived out of order; a newer point was already used
 
     if trip.status == Status.CREATED:
         await route_trip(session, trip, user, lat, lon, now)
@@ -550,6 +600,12 @@ async def nearby_food(
                 d = haversine(lat, lon, p.lat, p.lon)
                 if d <= radius:
                     found.append(NearbyPlace(p.display_name(user.language), p.kind, p.lat, p.lon, int(d)))
+    if len(found) < 2:
+        for p in gazetteer.food_near(lat, lon, radius):
+            d = haversine(lat, lon, p.lat, p.lon)
+            name = (p.name_am if user.language == "am" else p.name_en) or p.name
+            if all(f.name != name for f in found):
+                found.append(NearbyPlace(name, p.kind, p.lat, p.lon, int(d)))
     if len(found) < 2:
         try:
             for p in await overpass.food_near(lat, lon, int(radius)):

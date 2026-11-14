@@ -118,5 +118,20 @@ async def telegram_webhook(
     if bot is None or dp is None:
         raise HTTPException(status_code=503)
     update = Update.model_validate(await request.json(), context={"bot": bot})
-    await dp.feed_update(bot, update)
+    # Answer Telegram at once and handle the update in the background: if a slow
+    # handler held the response for ~60 s, Telegram would resend the update.
+    task = asyncio.create_task(_handle(update))
+    _updates.add(task)
+    task.add_done_callback(_updates.discard)
     return {"ok": True}
+
+
+_updates: set[asyncio.Task] = set()
+
+
+async def _handle(update: Update) -> None:
+    assert bot is not None and dp is not None
+    try:
+        await dp.feed_update(bot, update)
+    except Exception:
+        log.exception("handling update %s failed", update.update_id)

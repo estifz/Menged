@@ -187,3 +187,46 @@ async def test_where_am_i_and_time_left_texts(db, channel, scenario):
         assert "km to Bole Medhanialem" in text
         assert engine.time_left_text(user, trip).startswith("⏱ About ")
         assert "Bole Medhanialem" in engine.card_text(user, trip)
+
+
+async def test_places_come_from_offline_list_when_overpass_is_down(db, channel, fake_services, monkeypatch):
+    """Render's IPs are often throttled by the public Overpass servers: a trip
+    in Addis must still get its landmarks and food places, instantly."""
+    from app.services import overpass as ov
+    from app.services.http import PlaceCandidate, ServiceError
+
+    async def down(points, radius_m):
+        raise ServiceError("overpass timed out")
+
+    monkeypatch.setattr(ov, "places_along", down)
+    uid = await make_user()
+    async with session_scope() as s:
+        user = await s.get(engine.User, uid)
+        trip = await engine.create_trip(
+            s, user, PlaceCandidate("Meskel Square", 9.01024, 38.76125), start=(9.0121, 38.7456), now=T0
+        )
+        tid = trip.id
+    await engine.drain_background()
+    async with session_scope() as s:
+        places = list(await s.scalars(select(engine.TripPlace).where(engine.TripPlace.trip_id == tid)))
+    assert len(places) >= 5
+    assert any(p.is_food for p in places) and any(not p.is_food for p in places)
+    assert all(p.distance_from_route_m <= 200 for p in places)
+
+
+async def test_overpass_places_are_added_in_background(db, channel, scenario):
+    tid = await start_trip(await make_user())
+    await point(tid, 0, 0)
+    async with session_scope() as s:
+        names = list(await s.scalars(select(engine.TripPlace.name).where(engine.TripPlace.trip_id == tid)))
+    assert names == ["Lion of Judah"]
+
+
+async def test_out_of_order_point_is_ignored(db, channel, scenario):
+    tid = await start_trip(await make_user())
+    await point(tid, 0, 0)
+    await point(tid, 300, 60)
+    before = await get_trip(tid)
+    await point(tid, 150, 30)  # older than the last point
+    after = await get_trip(tid)
+    assert (after.last_lat, after.last_seen_at) == (before.last_lat, before.last_seen_at)

@@ -25,8 +25,8 @@ from app.services import nominatim, overpass, routing  # noqa: E402
 from app.services.http import ServiceError  # noqa: E402
 
 T0 = datetime(2026, 11, 14, 8, 0, tzinfo=UTC)
-START = (9.000, 38.760)
-DEST = (9.054, 38.760)  # ~6 km due north
+START = (10.000, 38.760)  # outside Addis, so the offline place list adds nothing
+DEST = (10.054, 38.760)  # ~6 km due north
 
 
 def lat_at(meters: float) -> float:

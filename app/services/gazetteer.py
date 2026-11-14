@@ -106,6 +106,64 @@ LANDMARK_KINDS = {
     "hotel", "park", "government", "marketplace", "townhall", "embassy", "cinema", "theatre",
 }
 MINOR_KINDS = {"bank", "fuel", "police", "school", "clinic", "guest_house"}
+FOOD_KINDS = {"restaurant", "cafe", "fast_food"}
+# Areas are stored as one point in the middle, so "passing" them is meaningless.
+AREA_KINDS = {"neighbourhood", "suburb", "quarter"}
+
+
+def _to_osm_place(i: int, p: dict):
+    from app.services.overpass import OsmPlace
+
+    kind = p.get("kind", "")
+    return OsmPlace(
+        osm_id=f"g{i}",
+        name=p["name"],
+        name_am=p.get("name_am"),
+        name_en=p.get("name_en"),
+        kind=kind if kind in FOOD_KINDS else "landmark",
+        lat=p["lat"],
+        lon=p["lon"],
+    )
+
+
+def along_route(points: list[tuple[float, float]], radius_m: float) -> list:
+    """Landmarks and food places within `radius_m` of a route, from the offline
+    list. Instant and independent of the public Overpass servers."""
+    from app.geo import Route
+
+    places, _, _ = _load()
+    if not places or not points:
+        return []
+    pad = radius_m / 111_000 * 1.2
+    south, north = min(p[0] for p in points) - pad, max(p[0] for p in points) + pad
+    west, east = min(p[1] for p in points) - pad, max(p[1] for p in points) + pad
+    route = Route(points)
+    out = []
+    for i, p in enumerate(places):
+        kind = p.get("kind", "")
+        if kind not in FOOD_KINDS and (kind not in LANDMARK_KINDS or kind in AREA_KINDS):
+            continue
+        if not (south <= p["lat"] <= north and west <= p["lon"] <= east):
+            continue
+        if route.project(p["lat"], p["lon"]).offset_m <= radius_m:
+            out.append(_to_osm_place(i, p))
+    return out
+
+
+def food_near(lat: float, lon: float, radius_m: float = 500) -> list:
+    """Restaurants and cafés around a point, from the offline list."""
+    from app.geo import haversine
+
+    places, _, _ = _load()
+    box = radius_m / 111_000 * 1.2
+    return [
+        _to_osm_place(i, p)
+        for i, p in enumerate(places)
+        if p.get("kind") in FOOD_KINDS
+        and abs(p["lat"] - lat) <= box
+        and abs(p["lon"] - lon) <= box
+        and haversine(lat, lon, p["lat"], p["lon"]) <= radius_m
+    ]
 
 
 def _token_coverage(a: list[str], b: list[str]) -> float:

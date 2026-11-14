@@ -26,3 +26,11 @@ def test_gazetteer_offline_search():
     assert gazetteer.search("zzzzqqq") == []
     near = gazetteer.nearest(9.01024, 38.76125, 200)
     assert near and gazetteer.display_name(near[0], "en") == "Meskel Square"
+
+
+def test_offline_places_along_route_and_food_near():
+    pts = [(9.0121, 38.7456), (9.01024, 38.76125)]  # Mexico Square -> Meskel Square
+    places = gazetteer.along_route(pts, 200)
+    assert places and all(p.kind in ("landmark", "restaurant", "cafe", "fast_food") for p in places)
+    food = gazetteer.food_near(9.0121, 38.7456, 500)
+    assert all(p.kind in ("restaurant", "cafe", "fast_food") for p in food)

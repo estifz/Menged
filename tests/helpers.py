@@ -30,7 +30,7 @@ async def point(trip_id: int, along_m: float, t_s: float, accuracy: float = 10.0
     async with session_scope() as s:
         trip = await s.get(Trip, trip_id)
         now = T0 + timedelta(seconds=t_s)
-        return await engine.add_location(
+        sent = await engine.add_location(
             s,
             trip,
             lat if lat is not None else lat_at(along_m),
@@ -39,6 +39,8 @@ async def point(trip_id: int, along_m: float, t_s: float, accuracy: float = 10.0
             recorded_at=now,
             now=now,
         )
+    await engine.drain_background()
+    return sent
 
 
 async def drive(trip_id: int, n: int = 41, step_m: float = 150, step_s: float = 30, extra_at_dest: int = 1):

@@ -77,12 +77,12 @@ def _servers() -> list[str]:
     return [primary] + [m for m in MIRRORS if m != primary]
 
 
-async def _run(query: str) -> list[OsmPlace]:
+async def _run(query: str, timeout: float = 25.0) -> list[OsmPlace]:
     """Try the main public server, then a mirror (public servers often 502/429)."""
     errors = []
     for url in _servers():
         try:
-            r = await client().post(url, data={"data": query}, timeout=70.0)
+            r = await client().post(url, data={"data": query}, timeout=timeout)
             r.raise_for_status()
             data = r.json()
             # Overpass reports timeouts and overload as a "remark" with HTTP 200.
@@ -108,7 +108,7 @@ async def places_along(points: list[tuple[float, float]], radius_m: int) -> list
     east = max(p[1] for p in points) + pad
     bbox = f"{south:.5f},{west:.5f},{north:.5f},{east:.5f}"
     parts = "".join(f"nwr{f}[\"name\"]({bbox});" for f in _FILTERS)
-    query = f"[out:json][timeout:60];({parts});out center tags;"
+    query = f"[out:json][timeout:25];({parts});out center tags;"
     places = await _run(query)
     route = Route(points)
     return [p for p in places if route.project(p.lat, p.lon).offset_m <= radius_m]
@@ -124,6 +124,6 @@ async def food_near(lat: float, lon: float, radius_m: int = 500) -> list[OsmPlac
         f'[out:json][timeout:20];nwr(around:{radius_m},{lat:.5f},{lon:.5f})'
         f'["amenity"~"^(restaurant|cafe|fast_food)$"]["name"];out center tags 60;'
     )
-    places = await _run(query)
+    places = await _run(query, timeout=8.0)  # a user is waiting for this one
     _nearby_cache.set(key, places)
     return places

@@ -62,6 +62,15 @@ async def session_scope() -> AsyncIterator[AsyncSession]:
         except Exception:
             await session.rollback()
             raise
+        # Work that must only start once this transaction's rows are visible
+        # to other sessions (e.g. background tasks that reference a new trip).
+        for callback in session.info.pop("after_commit", []):
+            callback()
+
+
+def after_commit(session: AsyncSession, callback) -> None:
+    """Run `callback()` after `session_scope` commits; dropped on rollback."""
+    session.info.setdefault("after_commit", []).append(callback)
 
 
 async def get_session() -> AsyncIterator[AsyncSession]:
