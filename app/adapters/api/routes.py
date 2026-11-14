@@ -152,6 +152,8 @@ async def post_locations(
     trip_id: int, body: schemas.LocationsIn, user: User = Depends(current_user), session: AsyncSession = Depends(get_session)
 ):
     trip = await own_trip(trip_id, user, session)
+    if trip.simulated:
+        return schemas.LocationsOut(notifications=[])
     before = await session.scalar(select(func.max(Notification.id)).where(Notification.trip_id == trip.id)) or 0
     async with engine.trip_lock(trip.id):
         for p in body.points:  # the app sends them oldest first

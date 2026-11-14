@@ -204,6 +204,9 @@ async def handle_point(message: Message, state: FSMContext, live: bool) -> None:
                 if message.edit_date is None:  # first message of a new live share
                     await message.answer(render("need_destination_first", user.language))
                 return
+            if trip.simulated:
+                # Active simulation in progress: do not let the phone's real GPS override the simulated route
+                return
             async with engine.trip_lock(trip.id):
                 await session.refresh(trip)
                 await engine.add_location(

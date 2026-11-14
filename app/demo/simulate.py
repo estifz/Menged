@@ -87,6 +87,8 @@ async def run(user_id: int, speedup: float, jitter_m: float = 6.0, sleep: bool =
     except asyncio.CancelledError:
         log.info("simulation for user %s cancelled", user_id)
         raise
+    except Exception:
+        log.exception("simulation failed for user %s", user_id)
     finally:
         _tasks.pop(user_id, None)
     return trip_id
