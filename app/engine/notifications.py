@@ -92,9 +92,13 @@ def _rule_next(trip: Trip, user: User, ctx: Ctx, sent: set[str]) -> OutMessage |
     s = get_settings()
     if trip.status != Status.APPROACHING or "next" in sent or ctx.became == Status.ARRIVED:
         return None
-    close = (ctx.distance_left is not None and ctx.distance_left <= s.next_m) or (
-        ctx.time_left_s is not None and ctx.time_left_s <= s.next_s
+    time_close = (
+        ctx.distance_left is not None
+        and ctx.distance_left <= s.next_m * 1.2
+        and ctx.time_left_s is not None
+        and ctx.time_left_s <= s.next_s
     )
+    close = (ctx.distance_left is not None and ctx.distance_left <= s.next_m) or time_close
     return make("next", user, Priority.HIGH, key="next") if close else None
 
 

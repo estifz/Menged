@@ -23,6 +23,7 @@ async def test_full_trip_sends_rules_in_order(db, channel, scenario):
         "new_place",
         "time_left",
         "new_street",
+        "time_left",
         "getting_close",
         "next",
         "arrived",
@@ -32,7 +33,7 @@ async def test_full_trip_sends_rules_in_order(db, channel, scenario):
     assert trip.first_street == "Churchill Avenue" and trip.current_street == "Bole Road"
     rows = await notifications(tid)
     by_key = {n.key: n for n in rows}
-    assert [n.key for n in rows if n.rule == "time_left"] == ["time_left_15", "time_left_10"]
+    assert [n.key for n in rows if n.rule == "time_left"] == ["time_left_15", "time_left_10", "time_left_5"]
     assert by_key["place:n1"].text == "📍 You are passing Lion of Judah."
     assert by_key["time_left_15"].text == "⏱ About 15 minutes to your destination."
     assert by_key["getting_close"].priority == Priority.HIGH

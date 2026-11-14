@@ -324,7 +324,8 @@ def _candidate_status(trip: Trip, p: Progress) -> str:
     s = get_settings()
     if p.d_dest <= s.arrived_m:
         return Status.ARRIVED
-    if p.distance_left <= s.approaching_m or p.time_left_s <= s.approaching_s:
+    time_close = (p.distance_left <= s.approaching_m * 1.2) and (p.time_left_s <= s.approaching_s)
+    if p.distance_left <= s.approaching_m or time_close:
         return Status.APPROACHING
     if trip.status == Status.APPROACHING and p.distance_left <= s.approaching_m * 2:
         return Status.APPROACHING  # hysteresis: don't flap at the boundary

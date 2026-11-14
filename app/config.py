@@ -48,9 +48,9 @@ class Settings(BaseSettings):
 
     # --- Trip engine thresholds (starting values, tune in testing) --------
     max_accuracy_m: float = 100.0
-    approaching_m: float = 500.0
-    approaching_s: float = 300.0
-    next_m: float = 150.0
+    approaching_m: float = 1000.0
+    approaching_s: float = 120.0
+    next_m: float = 500.0
     next_s: float = 60.0
     arrived_m: float = 50.0
     stale_after_s: int = 120
