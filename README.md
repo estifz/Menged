@@ -62,8 +62,9 @@ so voice notes are sent as OGG/Opus instead of MP3.
 
 Limits: ≥ 45 s between messages, ≤ 4 per 5 minutes; high priority skips both.
 Time left is recalculated from the rider's real speed. Raw location points are
-deleted 24 h after a trip ends. All thresholds are in `app/config.py` and can be
-overridden from `.env`.
+deleted 24 h after a trip ends. The essential thresholds are listed in `.env`
+with a comment each (restart the server after changing one); every other
+setting lives in `app/config.py`.
 
 ## REST API for the app (`/v1`)
 
