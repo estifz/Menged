@@ -13,7 +13,7 @@ async def test_demo_replay_arrives(db, channel, monkeypatch):
     demo = load_demo()
     assert demo is not None, "run scripts/record_demo.py first"
 
-    async def reverse(lat, lon, lang="en"):  # offline: only the recorded street samples
+    async def reverse(lat, lon, lang="en"):  
         best = None
         for s in demo.streets:
             d = haversine(lat, lon, s["lat"], s["lon"])

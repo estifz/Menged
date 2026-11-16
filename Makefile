@@ -1,4 +1,4 @@
-# Menged Task Runner (Node.js npm-scripts style)
+# Menged Task Runner
 # Run `make` or `make help` to see all available commands.
 
 VENV ?= .venv/bin
