@@ -1,4 +1,4 @@
-# Local Postgres for development (optional: the app also works with Neon).
+# Local Postgres for development
 #   docker compose up -d db
 #   DATABASE_URL=postgresql://menged:menged@localhost:5432/menged
 services:
